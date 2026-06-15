@@ -4,83 +4,88 @@ import project2 from "../assets/project2.png";
 import project3 from "../assets/project3.png";
 
 export default function Projects() {
+  const projects = [
+    {
+      image: project1,
+      title: "Educational Platform",
+      text: "An educational platform built to organize lessons, improve the learning experience, and present content in a clean responsive layout.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      live: "https://soleman-kamal.github.io/academic-platform/",
+      github: "https://github.com/Soleman-Kamal/academic-platform",
+    },
+    {
+      image: project2,
+      title: "NovaCart",
+      text: "A responsive e-commerce website with product sections, clean cards, simple navigation, and a modern shopping experience.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      live: "https://soleman-kamal.github.io/shop-hub/",
+      github: "https://github.com/Soleman-Kamal/Shop-Hup",
+    },
+    {
+      image: project3,
+      title: "Flavor House",
+      text: "A modern restaurant landing page with a polished hero section, menu area, contact section, and smooth responsive design.",
+      tags: ["HTML", "CSS", "JavaScript"],
+      live: "https://soleman-kamal.github.io/Gaza-Bites/",
+      github: "https://github.com/Soleman-Kamal/Gaza-Bites",
+    },
+  ];
+
   return (
     <section className="projects" id="projects">
+      <div className="projects-glow projects-glow-one"></div>
+      <div className="projects-glow projects-glow-two"></div>
+
       <div className="container">
-        <h2 className="section-title">My Projects</h2>
-        <p className="section-subtitle">
-          Here are some of the projects I have worked on.
-        </p>
+        <div className="projects-header">
+          <p className="projects-badge">Selected Work</p>
+          <h2 className="section-title">
+            My <span>Projects</span>
+          </h2>
+          <p className="section-subtitle">
+            A collection of web projects focused on responsive layouts, clean
+            UI, and real frontend practice.
+          </p>
+        </div>
 
         <div className="projects-grid">
-          <div className="project-card">
-            <img src={project1} alt="Educational Platform" />
-            <div className="project-info">
-              <h3>Educational Platform</h3>
-              <p>
-                An educational platform built with HTML, CSS, and JavaScript to
-                organize lessons and improve the learning experience.
-              </p>
-              <div className="project-links">
-                <a href="https://soleman-kamal.github.io/academic-platform/" target="_blank" rel="noreferrer">
-                  Live Demo
-                </a>
-                <a href="https://github.com/Soleman-Kamal/academic-platform" target="_blank" rel="noreferrer">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </div>
+          {projects.map((project) => (
+            <div className="project-card" key={project.title}>
+              <div className="project-image">
+                <img src={project.image} alt={project.title} />
 
-          <div className="project-card">
-            <img src={project2} alt="Shop Hub" />
-            <div className="project-info">
-              <h3>Shop Hub</h3>
-              <p>
-                A simple e-commerce website with a clean layout and responsive
-                design built using HTML and CSS.
-              </p>
-              <div className="project-links">
-                <a
-                  href="https://soleman-kamal.github.io/Shop-Hup/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Live Demo
-                </a>
-                <a
-                  href="https://github.com/Soleman-Kamal/Shop-Hup"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
+                <div className="project-overlay">
+                  <a href={project.live} target="_blank" rel="noreferrer">
+                    View Live
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div className="project-card">
-            <img src={project3} alt="Gaza Bites" />
-            <div className="project-info">
-              <h3>Gaza Bites</h3>
-              <p>
-                A restaurant landing page with a modern design, menu section,
-                contact area, and polished visual style.
-              </p>
-              <div className="project-links">
-                <a href="https://soleman-kamal.github.io/Gaza-Bites/" target="_blank" rel="noreferrer">
-                  Live Demo
-                </a>
-                <a
-                  href="https://github.com/Soleman-Kamal/Gaza-Bites"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
+              <div className="project-info">
+                <div className="project-top">
+                  <h3>{project.title}</h3>
+                  <span className="project-number">0{projects.indexOf(project) + 1}</span>
+                </div>
+
+                <p>{project.text}</p>
+
+                <div className="project-tags">
+                  {project.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </div>
+
+                <div className="project-links">
+                  <a href={project.live} target="_blank" rel="noreferrer">
+                    Live Demo
+                  </a>
+                  <a href={project.github} target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
+          ))}
         </div>
       </div>
     </section>

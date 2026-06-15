@@ -1,146 +1,416 @@
 .hero {
   min-height: 100vh;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: center;
-  background: linear-gradient(to right, #0f172a, #111827);
   color: white;
-  padding: 60px 0;
+  padding: 80px 0;
+  /* background:
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.18), transparent 30%),
+    radial-gradient(circle at 85% 70%, rgba(168, 85, 247, 0.18), transparent 30%),
+    linear-gradient(135deg, #020617 0%, #0f172a 45%, #111827 100%); */
+    background: transparent;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to bottom, black, transparent);
+  pointer-events: none;
+}
+
+.hero-bg-glow {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  animation: pulseGlow 5s ease-in-out infinite;
+}
+
+.glow-1 {
+  background: #38bdf8;
+  top: 10%;
+  left: 5%;
+}
+
+.glow-2 {
+  background: #8b5cf6;
+  bottom: 5%;
+  right: 10%;
+  animation-delay: 1.5s;
 }
 
 .hero-content {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 60px;
+  gap: 80px;
 }
 
 .hero-text {
-  flex: 1;
+  flex: 1.05;
+  animation: fadeUp 0.9s ease forwards;
 }
 
 .hero-subtitle {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: rgba(56, 189, 248, 0.1);
-  color: #38bdf8;
-  padding: 8px 16px;
+  color: #7dd3fc;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.35);
   font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 20px;
-  letter-spacing: 0.5px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: 0.4px;
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.12);
 }
 
 .hero-text h1 {
-  font-size: 60px;
-  line-height: 1.2;
-  margin-bottom: 20px;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.05;
+  margin-bottom: 24px;
+  letter-spacing: -2px;
 }
 
 .hero-text h1 span {
   color: #38bdf8;
+  text-shadow: 0 0 35px rgba(56, 189, 248, 0.65);
 }
 
 .hero-description {
   font-size: 18px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: #cbd5e1;
-  max-width: 550px;
-  margin-bottom: 30px;
+  max-width: 610px;
+  margin-bottom: 24px;
+}
+
+.hero-description strong {
+  color: white;
+}
+
+.hero-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 34px;
+}
+
+.hero-stack span {
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+  font-size: 14px;
+  backdrop-filter: blur(10px);
 }
 
 .hero-buttons {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   flex-wrap: wrap;
 }
 
 .btn-primary,
 .btn-secondary {
-  padding: 14px 28px;
-  border-radius: 10px;
-  font-weight: bold;
-  transition: 0.3s;
+  padding: 15px 30px;
+  border-radius: 14px;
+  font-weight: 800;
+  transition: 0.35s ease;
   display: inline-block;
 }
 
 .btn-primary {
-  background-color: #38bdf8;
-  color: #0f172a;
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  color: #020617;
+  box-shadow: 0 14px 35px rgba(56, 189, 248, 0.28);
 }
 
 .btn-primary:hover {
-  background-color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 45px rgba(56, 189, 248, 0.4);
 }
 
 .btn-secondary {
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  color: #7dd3fc;
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .btn-secondary:hover {
-  background-color: #38bdf8;
-  color: #0f172a;
+  background: #38bdf8;
+  color: #020617;
+  transform: translateY(-5px);
 }
 
-.hero-image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
-.image-box {
-  width: 350px;
-  height: 350px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #38bdf8, #1e293b);
+/* Right Visual */
+.hero-visual {
+  flex: 0.95;
+  min-height: 520px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-    animation: floatImage 3s ease-in-out infinite;
+  animation: fadeIn 1s ease forwards;
 }
 
-@keyframes floatImage {
-  0% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-12px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+.image-frame {
+  position: relative;
+  width: 385px;
+  height: 460px;
+  border-radius: 38px;
+  padding: 10px;
+  background: linear-gradient(145deg, #38bdf8, #8b5cf6, #22c55e);
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.45),
+    0 0 60px rgba(56, 189, 248, 0.25);
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+.image-frame::before {
+  content: "";
+  position: absolute;
+  inset: -22px;
+  border-radius: 50px;
+  background: linear-gradient(135deg, rgba(56,189,248,0.25), rgba(139,92,246,0.2));
+  filter: blur(25px);
+  z-index: -1;
+}
+
+.image-box {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background: #020617;
 }
 
 .image-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 24px;
+  object-position: center;
+  transform: scale(1.03);
+  transition: 0.5s ease;
 }
 
-@media (max-width: 900px) {
+.image-frame:hover img {
+  transform: scale(1.09);
+}
+
+.orbit {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(125, 211, 252, 0.28);
+  animation: rotateOrbit 14s linear infinite;
+}
+
+.orbit-one {
+  width: 470px;
+  height: 470px;
+}
+
+.orbit-two {
+  width: 560px;
+  height: 560px;
+  animation-duration: 22s;
+  animation-direction: reverse;
+}
+
+.floating-card {
+  position: absolute;
+  z-index: 5;
+  padding: 12px 18px;
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.78);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  color: white;
+  font-weight: 800;
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+  animation: popFloat 3.5s ease-in-out infinite;
+}
+
+.card-react {
+  top: 55px;
+  right: 20px;
+  color: #7dd3fc;
+}
+
+.card-code {
+  left: 5px;
+  bottom: 115px;
+  animation-delay: 0.7s;
+}
+
+.card-ui {
+  right: 25px;
+  bottom: 75px;
+  color: #c4b5fd;
+  animation-delay: 1.2s;
+}
+
+/* Animations */
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(1deg);
+  }
+}
+
+@keyframes popFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-14px) scale(1.04);
+  }
+}
+
+@keyframes rotateOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.18);
+    opacity: 0.6;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 950px) {
+  .hero {
+    padding: 70px 0;
+  }
+
   .hero-content {
     flex-direction: column-reverse;
     text-align: center;
+    gap: 40px;
   }
 
   .hero-description {
-    margin: 0 auto 30px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
+  .hero-stack,
   .hero-buttons {
     justify-content: center;
   }
 
-  .hero-text h1 {
-    font-size: 42px;
+  .hero-visual {
+    min-height: 430px;
+    width: 100%;
   }
 
-  .image-box {
-    width: 280px;
-    height: 280px;
+  .image-frame {
+    width: 300px;
+    height: 370px;
+  }
+
+  .orbit-one {
+    width: 360px;
+    height: 360px;
+  }
+
+  .orbit-two {
+    width: 420px;
+    height: 420px;
+  }
+
+  .floating-card {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+
+  .card-react {
+    right: 8%;
+  }
+
+  .card-code {
+    left: 7%;
+  }
+
+  .card-ui {
+    right: 9%;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-text h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .image-frame {
+    width: 260px;
+    height: 325px;
+  }
+
+  .orbit-one,
+  .orbit-two {
+    display: none;
+  }
+
+  .floating-card {
+    display: none;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    text-align: center;
   }
 }
