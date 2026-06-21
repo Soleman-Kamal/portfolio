@@ -8,15 +8,15 @@ export default function Projects() {
     {
       image: project1,
       title: "Educational Platform",
-      text: "An educational platform built to organize lessons, improve the learning experience, and present content in a clean responsive layout.",
+      text: "A clean educational website for presenting lessons and content in a simple responsive layout.",
       tags: ["HTML", "CSS", "JavaScript"],
       live: "https://soleman-kamal.github.io/academic-platform/",
       github: "https://github.com/Soleman-Kamal/academic-platform",
     },
     {
       image: project2,
-      title: "NovaCart",
-      text: "A responsive e-commerce website with product sections, clean cards, simple navigation, and a modern shopping experience.",
+      title: "NovaCart Store",
+      text: "A simple e-commerce layout with product cards, clear sections, and responsive design.",
       tags: ["HTML", "CSS", "JavaScript"],
       live: "https://soleman-kamal.github.io/shop-hub/",
       github: "https://github.com/Soleman-Kamal/Shop-Hup",
@@ -24,7 +24,7 @@ export default function Projects() {
     {
       image: project3,
       title: "Flavor House",
-      text: "A modern restaurant landing page with a polished hero section, menu area, contact section, and smooth responsive design.",
+      text: "A restaurant landing page with a hero section, menu area, and contact section.",
       tags: ["HTML", "CSS", "JavaScript"],
       live: "https://soleman-kamal.github.io/Gaza-Bites/",
       github: "https://github.com/Soleman-Kamal/Gaza-Bites",
@@ -33,40 +33,21 @@ export default function Projects() {
 
   return (
     <section className="projects" id="projects">
-      <div className="projects-glow projects-glow-one"></div>
-      <div className="projects-glow projects-glow-two"></div>
-
       <div className="container">
-        <div className="projects-header">
-          <p className="projects-badge">Selected Work</p>
-          <h2 className="section-title">
-            My <span>Projects</span>
-          </h2>
-          <p className="section-subtitle">
-            A collection of web projects focused on responsive layouts, clean
-            UI, and real frontend practice.
-          </p>
-        </div>
+          <p className="projects-badge">My Projects</p>
+        <div className="projects-list">
+          {projects.map((project, index) => (
+            <article className="project-item" key={project.title}>
+              <div className="project-number">
+                {String(index + 1).padStart(2, "0")}
+              </div>
 
-        <div className="projects-grid">
-          {projects.map((project) => (
-            <div className="project-card" key={project.title}>
               <div className="project-image">
                 <img src={project.image} alt={project.title} />
-
-                <div className="project-overlay">
-                  <a href={project.live} target="_blank" rel="noreferrer">
-                    View Live
-                  </a>
-                </div>
               </div>
 
               <div className="project-info">
-                <div className="project-top">
-                  <h3>{project.title}</h3>
-                  <span className="project-number">0{projects.indexOf(project) + 1}</span>
-                </div>
-
+                <h3>{project.title}</h3>
                 <p>{project.text}</p>
 
                 <div className="project-tags">
@@ -84,7 +65,7 @@ export default function Projects() {
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
