@@ -80,3 +80,24 @@
     grid-template-columns: 1fr;
   }
 }
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 18px;
+  border-radius: 50%;
+  background: rgba(214, 168, 79, 0.12);
+  border: 1px solid rgba(214, 168, 79, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d6a84f;
+  font-size: 30px;
+  font-weight: 800;
+  transition: 0.3s;
+}
+
+.contact-card:hover .contact-icon {
+  transform: scale(1.1);
+  background: rgba(214, 168, 79, 0.2);
+}

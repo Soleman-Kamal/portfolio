@@ -11,12 +11,14 @@ export default function Contact() {
 
         <div className="contact-cards">
           <div className="contact-card">
+            <div className="contact-icon">✉</div>
             <h3>Email</h3>
             <p>solemansheikh2004@gmail.com</p>
-            <a href="mailto:raafkar935@gmail.com">Send Email</a>
+            <a href="mailto:solemansheikh2004@gmail.com">Send Email</a>
           </div>
 
           <div className="contact-card">
+            <div className="contact-icon">⌘</div>
             <h3>GitHub</h3>
             <p>Soleman-Kamal</p>
             <a
@@ -29,9 +31,14 @@ export default function Contact() {
           </div>
 
           <div className="contact-card">
+            <div className="contact-icon">in</div>
             <h3>LinkedIn</h3>
-            <p>Your LinkedIn Profile</p>
-            <a href="https://www.linkedin.com/in/soleman-kamal-752483355/" target="_blank" rel="noreferrer">
+            <p>Soleman Kamal</p>
+            <a
+              href="https://www.linkedin.com/in/soleman-kamal-752483355/"
+              target="_blank"
+              rel="noreferrer"
+            >
               Visit LinkedIn
             </a>
           </div>
